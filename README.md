@@ -1,3 +1,5 @@
+![Slowloris Attack Diagram](doc/slowloris.png)
+
 # Slowloris Simulation Script
 
 This Python script simulates a Slowloris attack, a type of Denial of Service (DoS) attack where the attacker opens multiple connections to the web server and sends partial requests, which are never completed. The server keeps these connections open, which can exhaust its resources, potentially making the server unavailable to other legitimate users.
