@@ -27,7 +27,6 @@ def parse_command(command):
     args = shlex.split(command)
     headers = {}
     url = ""
-    method = "GET"  # Default method
     for i, arg in enumerate(args):
         if arg == '--header':
             header = args[i + 1]
@@ -35,7 +34,7 @@ def parse_command(command):
             headers[key] = value
         elif arg.startswith('http'):
             url = arg
-    return method, url, headers
+    return url, headers
 
 
 def setup_connections(method, url, headers, host, port, sockets, client_timeout):
@@ -45,12 +44,11 @@ def setup_connections(method, url, headers, host, port, sockets, client_timeout)
         f"{method} {path} HTTP/1.1",
         f"Host: {host}"
     ]
-    print("HEADER")
-    print(header_lines)
     for key, value in headers.items():
         header_lines.append(f"{key}: {value}")
     header_lines.append("Connection: keep-alive")
-
+    print("Initial Header Lines:")
+    print(header_lines)
     for _ in range(connection_count):
         try:
             # Create socket and connect to server
@@ -87,7 +85,7 @@ def maintain_connections(start_time, sockets, host, port):
         print(f"Error sending data: {err}")
 
 def main(method, command, duration=15):
-    _, url, headers = parse_command(command)
+    url, headers = parse_command(command)
     parsed_url = urlparse(url)
     host, port = parsed_url.hostname, parsed_url.port if parsed_url.port else 80
     sockets = []
