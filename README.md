@@ -1,4 +1,4 @@
-![Slowloris Attack Diagram](doc/slowloris.png)
+![Slowloris](doc/slowloris.png)
 
 # Slowloris Simulation Script
 
