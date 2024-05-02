@@ -32,5 +32,5 @@ python3 slowloris.py [-m METHOD] "curl COMMAND"
 python3 slowloris.py "curl --location 'http://localhost:9000/v1/test' --header 'X-App-Id: x-app'"
 ```
 ```bash
-python slowloris.py -m POST "curl --location 'http://localhost:9000/v1/test' --header 'X-App-Id: x-app'"
+python3 slowloris.py -m POST "curl --location 'http://localhost:9000/v1/test' --header 'X-App-Id: x-app'"
 ```
